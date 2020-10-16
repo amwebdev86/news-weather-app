@@ -36,10 +36,12 @@ export default function Search() {
 
   return (
     <Fragment>
+      <label for="query">Enter City:</label>
       <input
         type="text"
         value={query}
         onChange={e => setQuery(e.target.value)}
+        name="query"
       />
       <button
         type="button"
@@ -56,17 +58,19 @@ export default function Search() {
         <div>Loading...</div>
       ) : (
         <div>
-            <h1>{data.name}</h1>
-         
-        
+          <h1>{data.name}</h1>
+
           <ul>
             {data.weather.map(item => (
               <li key={item.id}>
                 <p>{item.main}</p>
                 <p>{item.description}</p>
-                <img
-                  src={`http://openweathermap.org/img/wn/${item.icon}@2x.png` } alt="Current weather icon"
-                />
+                <span>
+                  <img
+                    src={`http://openweathermap.org/img/wn/${item.icon}@2x.png`}
+                    alt="Current weather icon"
+                  />
+                </span>
               </li>
             ))}
           </ul>

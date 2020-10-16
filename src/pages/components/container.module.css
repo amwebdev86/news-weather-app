@@ -1,9 +1,11 @@
 .container{
 justify-content: center;
 margin: 3rem auto;
-background-color: #fffccc;
+color: #4c4c4c;
+background: #f8fdf3;
 box-shadow: 5px 5px 6px #cccccc;
 border-radius: 5%;
+max-width: 800px;
 }
 /* ================================= 
   Element Styles
@@ -13,11 +15,7 @@ border-radius: 5%;
     box-sizing: border-box;
 }
 
-body {
-    font-family: 'Lato', sans-serif;
-    color: #4c4c4c;
-    background: #f8fdf3;
-}
+
 
 h1,
 p,
@@ -26,8 +24,8 @@ form button {
 }
 
 h1 {
-    font-family: 'Courgette', cursive;
     text-shadow: 0 1px 0 rgba(0, 0, 0, .4);
+    color: green;
     line-height: .65;
     margin-top: .5em;
     margin-bottom: 0;
@@ -42,24 +40,6 @@ p {
     text-shadow: 0 1px 0 rgba(0, 0, 0, .25);
 }
 
-form {
-    width: 60%;
-    background: white;
-    display: inline-block;
-    overflow: hidden;
-    display: -webkit-flex;
-    display: flex;
-    border-radius: .2em;
-    border: solid 4px white;
-    box-shadow: 0 1px 14px rgba(0, 0, 0, .12);
-}
-
-form button {
-    padding: 0 1em;
-    font-size: 1em;
-    background: #7bcbc4;
-    border-radius: .2em;
-}
 
 ul {
     list-style: none;
@@ -69,7 +49,7 @@ ul {
 
 ul li {
     padding: 1em;
-    background: #fff;
+    background: #000;
     border-radius: .2em;
     border: solid 1px rgba(88, 183, 205, .2);
     border-bottom: solid 2px rgba(88, 183, 205, .2);
@@ -106,7 +86,7 @@ li input[type=text] {
     margin-bottom: .3em;
 }
 
-li input[type=text] {
+input[type=text] {
     padding: .2em;
     width: 95%;
     border: 1px dotted rgba(0, 0, 0, .2);
@@ -220,7 +200,6 @@ div>label {
     }
 
     .main>div {
-        float: right;
         display: inline-block;
         margin-top: 12px;
         margin-right: 1.25%;
