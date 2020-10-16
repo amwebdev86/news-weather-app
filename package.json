@@ -14,9 +14,14 @@
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
   },
   "dependencies": {
-    "gatsby": "^2.24.67",
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0"
+    "axios": "^0.20.0",
+    "gatsby": "^2.24.78",
+    "gatsby-plugin-typography": "^2.5.13",
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0",
+    "react-typography": "^0.16.19",
+    "typography": "^0.16.19",
+    "typography-theme-fairy-gates": "^0.16.19"
   },
   "devDependencies": {
     "prettier": "2.1.2"
