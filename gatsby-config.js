@@ -13,12 +13,5 @@ module.exports = {
         pathToConfigModule: `src/utils/typography`,
       },
     },
-    {
-      resolve: `gatsby-source-patronus`,
-      options: {
-        apiKey: process.env.WEATHER_API_KEY,
-        mapApiKey : process.env.MAP_API_KEY
-      },
-    },
   ],
 }
