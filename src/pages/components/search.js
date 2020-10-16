@@ -1,7 +1,7 @@
 import React, { useState, useEffect, Fragment } from "react"
 import axios from "axios"
 import styles from "../weather-result.module.css"
-const apiKey = "68e9850ec34b7c2c8e5be6ff02faebd8"
+const apiKey = process.env.WEATHER_API_KEY;
 export default function Search() {
   const [data, setData] = useState({ weather: [] })
   const [query, setQuery] = useState("Louisville")
@@ -16,9 +16,10 @@ export default function Search() {
       setIsError(false)
       setIsLoading(true)
       try {
+        console.log(apiKey)
+
         const result = await axios(url)
-        console.log(result.data)
-        setData(result.data)
+        setData(result.data);
       } catch (error) {
         setIsError(true)
       }
@@ -59,7 +60,7 @@ export default function Search() {
                 <p>{item.main}</p>
                 <p>{item.description}</p>
                 <img
-                  src={`http://openweathermap.org/img/wn/${item.icon}@2x.png`}
+                  src={`http://openweathermap.org/img/wn/${item.icon}@2x.png` } alt="Current weather icon"
                 />
               </li>
             ))}

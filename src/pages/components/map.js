@@ -1,4 +1,5 @@
-const googleMapAPI = "AIzaSyDBnyONM02cq65CsFuOvBqv4DdQim41Zzw"
+import React from "react";
+//const googleMapAPI = process.env.development.MAP_API_KEY;
 export default function Map() {
     
 
