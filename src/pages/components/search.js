@@ -2,6 +2,9 @@ import React, { useState, useEffect, Fragment } from "react"
 import axios from "axios"
 import styles from "../weather-result.module.css"
 const apiKey = process.env.WEATHER_API_KEY;
+/**
+ * Weather Search Component
+ */
 export default function Search() {
   const [data, setData] = useState({ weather: [] })
   const [query, setQuery] = useState("Louisville")
@@ -16,9 +19,11 @@ export default function Search() {
       setIsError(false)
       setIsLoading(true)
       try {
-        console.log(apiKey)
-
         const result = await axios(url)
+        /**
+         * REMOVE AFTER DEV
+      */
+        console.log(result.data);
         setData(result.data);
       } catch (error) {
         setIsError(true)
