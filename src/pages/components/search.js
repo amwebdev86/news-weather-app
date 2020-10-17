@@ -1,7 +1,9 @@
 import React, { useState, useEffect, Fragment } from "react"
 import axios from "axios"
 import styles from "../weather-result.module.css"
-const apiKey = process.env.WEATHER_API_KEY;
+import Display from "./display"
+import Temperature from "./temperature"
+const apiKey = process.env.WEATHER_API_KEY
 /**
  * Weather Search Component
  */
@@ -22,9 +24,10 @@ export default function Search() {
         const result = await axios(url)
         /**
          * REMOVE AFTER DEV
-      */
-        console.log(result.data);
-        setData(result.data);
+         */
+       // console.dir(result.data)
+        setData(result.data)
+        
       } catch (error) {
         setIsError(true)
       }
@@ -36,7 +39,7 @@ export default function Search() {
 
   return (
     <Fragment>
-      <label for="query">Enter City:</label>
+      <label htmlFor="query">Enter City:</label>
       <input
         type="text"
         value={query}
@@ -54,31 +57,9 @@ export default function Search() {
         Get Weather
       </button>
       {isError && <div className={styles.error}>Something went wrong...</div>}
-      {isLoading ? (
-        <div>Loading...</div>
-      ) : (
-        <div>
-          <h1>{data.name}</h1>
-
-          <ul>
-            {data.weather.map(item => (
-              <li key={item.id}>
-                <p>{item.main}</p>
-                <p>{item.description}</p>
-                <span>
-                  <img
-                    src={`http://openweathermap.org/img/wn/${item.icon}@2x.png`}
-                    alt="Current weather icon"
-                  />
-                </span>
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
+      {isLoading ? <div>Loading...</div> : <Display data={data} />}
+      <Temperature data={data.main} />
     </Fragment>
   )
 }
-function convertKelvinToFah(k) {
-  return ((k - 273.15) * 9) / 5 + 32
-}
+
