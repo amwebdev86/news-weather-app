@@ -4,6 +4,8 @@ import styles from "../weather-result.module.css"
 import Card from "./card"
 import Temperature from "./temperature"
 import WeatherCard from "./weather-card"
+import WindCard from "./wind-card"
+
 
 const apiKey = process.env.WEATHER_API_KEY
 /**
@@ -12,7 +14,7 @@ const apiKey = process.env.WEATHER_API_KEY
  * which becomes updated when user inputs a new city.
  */
 export default function Search() {
-  const [data, setData] = useState({ weather: [], sys: [], main: [] })
+  const [data, setData] = useState({ weather: [], sys: [], main: [], wind:[] })
   const [query, setQuery] = useState("Louisville")
   const [url, setUrl] = useState(
     `https://api.openweathermap.org/data/2.5/weather?q=Louisville&appid=${apiKey}`
@@ -70,7 +72,8 @@ export default function Search() {
             sunset={data.sys.sunset}
           />
           <Temperature main={data.main} />
-          <WeatherCard weather={data.weather} />
+            <WeatherCard weather={data.weather} />
+            <WindCard wind={data.wind}/>
         </div>
       )}
     </Fragment>
