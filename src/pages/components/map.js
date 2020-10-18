@@ -3,7 +3,7 @@ import React from "react"
 export default function Map() {
   return (
     <div>
-      <h1>MAP GOES HERE</h1>
+      <img alt='google-map'></img>
     </div>
   )
 }

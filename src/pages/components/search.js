@@ -1,14 +1,18 @@
 import React, { useState, useEffect, Fragment } from "react"
 import axios from "axios"
 import styles from "../weather-result.module.css"
-import Display from "./display"
+import Card from "./card"
 import Temperature from "./temperature"
+import WeatherCard from "./weather-card"
+
 const apiKey = process.env.WEATHER_API_KEY
 /**
  * Weather Search Component
+ * it takes no props but has state which changes on a new URL
+ * which becomes updated when user inputs a new city.
  */
 export default function Search() {
-  const [data, setData] = useState({ weather: [] })
+  const [data, setData] = useState({ weather: [], sys: [], main: [] })
   const [query, setQuery] = useState("Louisville")
   const [url, setUrl] = useState(
     `https://api.openweathermap.org/data/2.5/weather?q=Louisville&appid=${apiKey}`
@@ -25,9 +29,8 @@ export default function Search() {
         /**
          * REMOVE AFTER DEV
          */
-       // console.dir(result.data)
+        //console.dir(result.data)
         setData(result.data)
-        
       } catch (error) {
         setIsError(true)
       }
@@ -57,9 +60,19 @@ export default function Search() {
         Get Weather
       </button>
       {isError && <div className={styles.error}>Something went wrong...</div>}
-      {isLoading ? <div>Loading...</div> : <Display data={data} />}
-      <Temperature data={data.main} />
+      {isLoading ? (
+        <div>Loading...</div>
+      ) : (
+        <div>
+          <Card
+            name={data.name}
+            sunrise={data.sys.sunrise}
+            sunset={data.sys.sunset}
+          />
+          <Temperature main={data.main} />
+          <WeatherCard weather={data.weather} />
+        </div>
+      )}
     </Fragment>
   )
 }
-
