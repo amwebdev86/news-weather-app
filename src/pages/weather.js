@@ -9,7 +9,7 @@ export default function Weather() {
 
   return (
     <Container>
-      <Header headerText="Weather API" />
+      <Header headerText="Weather" />
       <Search />
       <Map />
     </Container>

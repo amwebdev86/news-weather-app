@@ -1,21 +1,16 @@
 
 /* ================================= 
-  Element Styles
+Element Styles
 ==================================== */
 
 * {
     box-sizing: border-box;
 }
-
 a{
-    padding: 2px 2px 2px 2px;
+    text-decoration: none;
 }
 
-h1,
-p,
-form button {
-    color: white;
-}
+
 
 h1 {
     text-shadow: 0 1px 0 rgba(0, 0, 0, .4);
@@ -70,14 +65,8 @@ header {
     background-size: cover;
 }
 
-header input {
-    padding: 12px;
-    font-size: 1.15em;
-    width: 100%;
-}
 
-li span,
-li input[type=text] {
+li span {
     color: #707070;
     font-size: 1.3em;
     margin-bottom: .3em;
@@ -95,24 +84,11 @@ li label {
     color: rgba(112, 112, 112, .55);
 }
 
-li span,
-li input[type=text]:first-child {
+li span
+{
     display: block;
 }
 
-li button {
-    font-size: .78em;
-    margin-top: 1.65em;
-    margin-right: .4em;
-    border-radius: .3em;
-    padding: .4em .6em;
-    color: white;
-    background: #58b7cd;
-}
-
-li button:last-child {
-    background: rgba(88, 183, 205, .5);
-}
 
 .wrapper {
     width: 100%;
@@ -124,25 +100,11 @@ li button:last-child {
     box-shadow: 0 0 26px rgba(0, 0, 0, .13);
 }
 
-div>input:last-child {
-    font-size: 1em;
-    margin-left: 6px;
-}
 
-div>label {
-    color: #767676;
-}
 
-/* responded */
-.responded {
-    transition: 0.4s;
-    border-color: rgba(88, 183, 205, .9);
-}
 
-.responded label {
-    transition: 0.4s;
-    color: rgba(88, 183, 205, 1);
-}
+
+
 
 /* ================================= 
   Media Queries

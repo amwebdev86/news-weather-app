@@ -1,14 +1,24 @@
-import React from "react";
-import { Link } from "gatsby";
-
+import React from "react"
+import { Link } from "gatsby"
+const linkStyles = {
+  color: "white",
+  display: "inline-block",
+  margin: "0 0.5rem",
+  padding: "0.25rem",
+  textDecoration: "none",
+}
 export default function Header(props) {
-    return (
-      <header>
-        <div>
-          <Link to="/">Home</Link>
-          <Link to="/weather">Check Weather</Link>
-        </div>
-        <h1>{props.headerText}</h1>
-      </header>
-    )
+  return (
+    <header>
+      <div>
+        <Link to="/" activeStyle={{ color: "red" }} style={linkStyles}>
+          Home
+        </Link>
+        <Link to="/weather" activeStyle={{ color: "red" }} style={linkStyles}>
+          Check Weather
+        </Link>
+      </div>
+      <h1>{props.headerText}</h1>
+    </header>
+  )
 }
