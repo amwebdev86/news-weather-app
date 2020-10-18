@@ -1,12 +1,22 @@
-import React from 'react'
+import React from "react"
 
 export default function Temperature(props) {
-    return (
-      <div>
-            <h3>Temp: {convertKelvinToFah(props.main.temp)} ({convertKelvinToCelsius(props.main.temp)})</h3>
-            
-      </div>
-    )
+  return (
+    <div>
+      <h4>
+        Temp: {convertKelvinToFah(props.main.temp)} (
+        {convertKelvinToCelsius(props.main.temp)})
+      </h4>
+      <p>Feels like: {convertKelvinToFah(props.main.feels_like)}</p>
+      <h4>
+        High: {convertKelvinToFah(props.main.temp_max)} Low:{" "}
+        {convertKelvinToFah(props.main.temp_min)}
+      </h4>
+      <p>Humidity: {props.main.humidity} </p>
+
+      <p>Pressure: {props.main.pressure / 100}mb</p>
+    </div>
+  )
 }
 //export these from another file.
 function convertKelvinToFah(k) {
