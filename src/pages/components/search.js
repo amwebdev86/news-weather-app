@@ -1,12 +1,19 @@
 import React, { useState, useEffect, Fragment } from "react"
 import axios from "axios"
 import styles from "../weather-result.module.css"
-const apiKey = process.env.WEATHER_API_KEY;
+import Card from "./card"
+import Temperature from "./temperature"
+import WeatherCard from "./weather-card"
+import WindCard from "./wind-card"
+
+const apiKey = process.env.WEATHER_API_KEY
 /**
  * Weather Search Component
+ * it takes no props but has state which changes on a new URL
+ * which becomes updated when user inputs a new city.
  */
 export default function Search() {
-  const [data, setData] = useState({ weather: [] })
+  const [data, setData] = useState({ weather: [], sys: [], main: [], wind: [] })
   const [query, setQuery] = useState("Louisville")
   const [url, setUrl] = useState(
     `https://api.openweathermap.org/data/2.5/weather?q=Louisville&appid=${apiKey}`
@@ -22,9 +29,9 @@ export default function Search() {
         const result = await axios(url)
         /**
          * REMOVE AFTER DEV
-      */
-        console.log(result.data);
-        setData(result.data);
+         */
+        //console.dir(result.data)
+        setData(result.data)
       } catch (error) {
         setIsError(true)
       }
@@ -36,7 +43,7 @@ export default function Search() {
 
   return (
     <Fragment>
-      <label for="query">Enter City:</label>
+      <label htmlFor="query">Enter City:</label>
       <input
         type="text"
         value={query}
@@ -58,27 +65,16 @@ export default function Search() {
         <div>Loading...</div>
       ) : (
         <div>
-          <h1>{data.name}</h1>
-
-          <ul>
-            {data.weather.map(item => (
-              <li key={item.id}>
-                <p>{item.main}</p>
-                <p>{item.description}</p>
-                <span>
-                  <img
-                    src={`http://openweathermap.org/img/wn/${item.icon}@2x.png`}
-                    alt="Current weather icon"
-                  />
-                </span>
-              </li>
-            ))}
-          </ul>
+          <Card
+            name={data.name}
+            sunrise={data.sys.sunrise}
+            sunset={data.sys.sunset}
+          />
+          <WeatherCard weather={data.weather} />
+          <Temperature main={data.main} />
+          <WindCard wind={data.wind} />
         </div>
       )}
     </Fragment>
   )
-}
-function convertKelvinToFah(k) {
-  return ((k - 273.15) * 9) / 5 + 32
 }
