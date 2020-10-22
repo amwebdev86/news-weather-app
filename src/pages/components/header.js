@@ -12,10 +12,10 @@ export default function Header(props) {
     <header>
       <div>
         <Link to="/" activeStyle={{ color: "red" }} style={linkStyles}>
-          Home
+          {props.links[0]}
         </Link>
         <Link to="/weather" activeStyle={{ color: "red" }} style={linkStyles}>
-          Check Weather
+          {props.links[1]}
         </Link>
       </div>
       <h1>{props.headerText}</h1>

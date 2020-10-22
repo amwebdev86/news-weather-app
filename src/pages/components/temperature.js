@@ -1,5 +1,4 @@
 import React from "react"
-
 export default function Temperature(props) {
   return (
     <div>
@@ -19,6 +18,7 @@ export default function Temperature(props) {
   )
 }
 //export these from another file.
+
 function convertKelvinToFah(k) {
   return (((k - 273.15) * 9) / 5 + 32).toFixed(2) + " \xB0F"
 }
