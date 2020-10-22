@@ -1,7 +1,6 @@
 import React from "react"
 
 export default function Card(props) {
-  console.dir(props.data.name);
   return (
     <div>
       <h1>{props.data.name}</h1>

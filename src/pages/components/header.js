@@ -18,7 +18,7 @@ export default function Header(props) {
           <Link to="/weather" activeStyle={{ color: "red" }} style={linkStyles}>
             {props.links[1]}
           </Link>
-          <Link to="/search-container" activeStyle={{ color: "red" }} style={linkStyles}>
+          <Link to="/search" activeStyle={{ color: "red" }} style={linkStyles}>
             {props.links[2]}
           </Link>
         </div>

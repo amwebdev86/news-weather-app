@@ -4,6 +4,8 @@ import styles from "../weather-result.module.css"
 import Card from "./card"
 import Temperature from "./temperature"
 import WeatherCard from "./weather-card"
+import Header from "./header"
+import Container from "./container"
 
 const apiKey = process.env.WEATHER_API_KEY
 /**
@@ -11,14 +13,14 @@ const apiKey = process.env.WEATHER_API_KEY
  * it takes no props but has state which changes on a new URL
  * which becomes updated when user inputs a new city.
  */
-export default function Search(props) {
+export default function Search({ pageContext: { weather } }) {
   const [data, setData] = useState({
-    weather: [...props.data.weather],
+    weather: [],
     sys: {},
     main: {},
     wind: {},
   })
-  const [query, setQuery] = useState(props.data.name)
+  const [query, setQuery] = useState(weather.name)
   const [url, setUrl] = useState(
     `https://api.openweathermap.org/data/2.5/weather?q=Louisville&appid=${apiKey}`
   )
@@ -46,34 +48,40 @@ export default function Search(props) {
   }, [url])
 
   return (
-    <Fragment>
-      <label htmlFor="query">Enter City:</label>
-      <input
-        type="text"
-        value={query}
-        onChange={e => setQuery(e.target.value)}
-        name="query"
-      />
-      <button
-        type="button"
-        onClick={() =>
-          setUrl(
-            `https://api.openweathermap.org/data/2.5/weather?q=${query}&appid=${apiKey}`
-          )
-        }
-      >
-        Get Weather
-      </button>
-      {isError && <div className={styles.error}>Something went wrong...</div>}
-      {isLoading ? (
-        <div>Loading...</div>
-      ) : (
-        <div>
-          <Card data={weather} />
-          <WeatherCard weather={data.weather} />
-          <Temperature main={data.main} />
-        </div>
-      )}
-    </Fragment>
+    <Container>
+      <Fragment>
+        <Header
+          links={["Home", "Louisville", "Search"]}
+          headerText={data.name + "Weather"}
+        />
+        <label htmlFor="query">Enter City:</label>
+        <input
+          type="text"
+          value={query}
+          onChange={e => setQuery(e.target.value)}
+          name="query"
+        />
+        <button
+          type="button"
+          onClick={() =>
+            setUrl(
+              `https://api.openweathermap.org/data/2.5/weather?q=${query}&appid=${apiKey}`
+            )
+          }
+        >
+          Get Weather
+        </button>
+        {isError && <div className={styles.error}>Something went wrong...</div>}
+        {isLoading ? (
+          <div>Loading...</div>
+        ) : (
+          <div>
+            <Card data={data} />
+            <WeatherCard weather={data.weather} />
+            <Temperature main={data.main} />
+          </div>
+        )}
+      </Fragment>
+    </Container>
   )
 }

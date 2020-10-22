@@ -9,7 +9,7 @@ export default function Weather({ pageContext: { weather } }) {
     <Container>
       {
         <div>
-          <Header headerText={weather.name} links={["Home", "Louisville"]} />
+          <Header headerText={weather.name} links={["Home", "Louisville", "Search"]} />
           <Card data={weather} />
           <Temperature main={weather.main} />
           <WeatherCard weather={weather.weather} />
