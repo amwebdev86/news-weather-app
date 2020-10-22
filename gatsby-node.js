@@ -29,7 +29,7 @@ exports.createPages = async ({ actions: { createPage } }) => {
   })
   createPage({
     path: "/search/",
-    component: require.resolve("./src/pages/components/search"),
+    component: require.resolve("./src/templates/search"),
     context: { weather },
   })
 }

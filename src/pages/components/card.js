@@ -1,7 +1,7 @@
 import React from "react"
 
 export default function Card(props) {
-  return (
+  return props.data === undefined ? null : (
     <div>
       <h1>{props.data.name}</h1>
       <h4>Sunrise: {convertUnixTime(props.data.sys.sunrise)} am </h4>

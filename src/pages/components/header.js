@@ -13,13 +13,13 @@ export default function Header(props) {
       {
         <div>
           <Link to="/" activeStyle={{ color: "red" }} style={linkStyles}>
-            {props.links[0]}
+            {props.links === undefined ? null : props.links[0]}
           </Link>
           <Link to="/weather" activeStyle={{ color: "red" }} style={linkStyles}>
-            {props.links[1]}
+            {props.links === undefined ? null : props.links[1]}
           </Link>
           <Link to="/search" activeStyle={{ color: "red" }} style={linkStyles}>
-            {props.links[2]}
+            {props.links === undefined ? null : props.links[2]}
           </Link>
         </div>
       }

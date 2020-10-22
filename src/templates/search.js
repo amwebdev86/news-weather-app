@@ -1,11 +1,11 @@
 import React, { useState, useEffect, Fragment } from "react"
 import axios from "axios"
-import styles from "../weather-result.module.css"
-import Card from "./card"
-import Temperature from "./temperature"
-import WeatherCard from "./weather-card"
-import Header from "./header"
-import Container from "./container"
+import styles from "../pages/weather-result.module.css"
+import Card from "../pages/components/card"
+import Temperature from "../pages/components/temperature"
+import WeatherCard from "../pages/components/weather-card"
+import Header from "../pages/components/header"
+import Container from "../pages/components/container"
 
 const apiKey = process.env.WEATHER_API_KEY
 /**
@@ -72,7 +72,7 @@ export default function Search({ pageContext: { weather } }) {
           Get Weather
         </button>
         {isError && <div className={styles.error}>Something went wrong...</div>}
-        {isLoading ? (
+        {isLoading && !data ? (
           <div>Loading...</div>
         ) : (
           <div>
