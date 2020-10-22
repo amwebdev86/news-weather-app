@@ -27,4 +27,9 @@ exports.createPages = async ({ actions: { createPage } }) => {
         component: require.resolve("./src/templates/weather"),
         context: {weather},
     });
+    createPage({
+        path: '/search/',
+        component: require.resolve("./src/templates/search-container"),
+        context: {weather},
+    });
 }

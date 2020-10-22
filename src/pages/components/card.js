@@ -1,11 +1,12 @@
 import React from "react"
 
 export default function Card(props) {
+  console.dir(props.data.name);
   return (
     <div>
-      <h1>{props.name}</h1>
-      <h4>Sunrise: {convertUnixTime(props.sunrise)} am </h4>
-      <h4> Sunset: {convertUnixTime(props.sunset)} pm</h4>
+      <h1>{props.data.name}</h1>
+      <h4>Sunrise: {convertUnixTime(props.data.sys.sunrise)} am </h4>
+      <h4> Sunset: {convertUnixTime(props.data.sys.sunset)} pm</h4>
     </div>
   )
 }

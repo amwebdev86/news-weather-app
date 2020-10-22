@@ -4,7 +4,7 @@ export default function Home({ pageContext: { name } }) {
   return (
     <Container>
       <div>
-              <Header headerText={name} links={['Home', 'Louisville']}/>
+        <Header headerText={name} links={["Home", "Louisville", "Search"]} />
       </div>
     </Container>
   )

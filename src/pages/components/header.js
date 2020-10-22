@@ -10,14 +10,19 @@ const linkStyles = {
 export default function Header(props) {
   return (
     <header>
-      <div>
-        <Link to="/" activeStyle={{ color: "red" }} style={linkStyles}>
-          {props.links[0]}
-        </Link>
-        <Link to="/weather" activeStyle={{ color: "red" }} style={linkStyles}>
-          {props.links[1]}
-        </Link>
-      </div>
+      {
+        <div>
+          <Link to="/" activeStyle={{ color: "red" }} style={linkStyles}>
+            {props.links[0]}
+          </Link>
+          <Link to="/weather" activeStyle={{ color: "red" }} style={linkStyles}>
+            {props.links[1]}
+          </Link>
+          <Link to="/search-container" activeStyle={{ color: "red" }} style={linkStyles}>
+            {props.links[2]}
+          </Link>
+        </div>
+      }
       <h1>{props.headerText}</h1>
     </header>
   )
