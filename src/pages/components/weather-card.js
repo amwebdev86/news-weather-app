@@ -2,7 +2,7 @@ import React from "react"
 
 export default function WeatherCard(props) {
   return (
-  ( props.weather === undefined ? null : <ul>
+  ( props.weather === undefined ? <div>Content Unavailable</div> : <ul>
       {props.weather.map(item => (
         <li key={item.id}>
           <img

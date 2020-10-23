@@ -1,10 +1,11 @@
 import React, { useState, useEffect, Fragment } from "react"
 import axios from "axios"
-import styles from "../pages/weather-result.module.css"
+import styles from "../pages/components/weather-result.module.css"
 import Card from "../pages/components/card"
 import Temperature from "../pages/components/temperature"
 import WeatherCard from "../pages/components/weather-card"
 import Header from "../pages/components/header"
+import WindCard from "../pages/components/wind-card"
 import Container from "../pages/components/container"
 
 const apiKey = process.env.WEATHER_API_KEY
@@ -79,6 +80,7 @@ export default function Search({ pageContext: { weather } }) {
             <Card data={data} />
             <WeatherCard weather={data.weather} />
             <Temperature main={data.main} />
+            <WindCard wind={data.wind} />
           </div>
         )}
       </Fragment>

@@ -1,7 +1,7 @@
 import React from "react"
 export default function Temperature(props) {
   return (
-  ( props.main ===undefined ? null : <div>
+  ( props.main ===undefined ? <div>Content unavailable</div> : <div>
       <h4>
         Temp: {convertKelvinToFah(props.main.temp)} (
         {convertKelvinToCelsius(props.main.temp)})
