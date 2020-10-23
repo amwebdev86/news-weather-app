@@ -17,7 +17,7 @@ exports.createPages = async ({ actions: { createPage } }) => {
   const weather = await getCityWeather("louisville")
   createPage({
     path: "/",
-    component: require.resolve("./src/templates/home"),
+    component: require.resolve("./src/templates/index"),
     context: {
       name: "Weather and News",
     },
