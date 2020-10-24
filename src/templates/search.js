@@ -49,12 +49,12 @@ export default function Search({ pageContext: { weather } }) {
   }, [url])
 
   return (
-    <Container>
-      <Fragment>
-        <Header
-          links={["Home", "Louisville", "Search"]}
-          headerText={data.name + "Weather"}
-        />
+    <Fragment>
+      <Header
+        links={["Home", "Louisville", "Search"]}
+        headerText={data.name + "Weather"}
+      />
+      <Container>
         <label htmlFor="query">Enter City:</label>
         <input
           type="text"
@@ -83,7 +83,7 @@ export default function Search({ pageContext: { weather } }) {
             <WindCard wind={data.wind} />
           </div>
         )}
-      </Fragment>
-    </Container>
+      </Container>
+    </Fragment>
   )
 }
