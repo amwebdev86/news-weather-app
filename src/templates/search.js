@@ -34,10 +34,7 @@ export default function Search({ pageContext: { weather } }) {
       setIsLoading(true)
       try {
         const result = await axios(url)
-        /**
-         * REMOVE AFTER DEV
-         */
-        //console.dir(result.data)
+       
         setData(result.data)
       } catch (error) {
         setIsError(true)
