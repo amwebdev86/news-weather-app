@@ -3,9 +3,34 @@ Get the latest weather for any city by searching the city name and retrieving da
 This project was created following the project requirements for [Code Louisville](https://codelouisville.org/) which are detailed below.
 
 ## Development
-The application is broken into several components including 3 template components using createPages() a node.js API method in Gatsby. The created pages corresponding components are provided the pageContext as props which is the returned JSON from [Open weather](https://openweathermap.org). The Search component displays a text field and button that allows the user to enter and update the query in the API endpoint. initially the page displays no information until the component mounts. After intial mount the component updates it's state whenever the query changes from user input.
+The application is broken into several components including 3 template components using createPages() a node.js API method in Gatsby. The created pages corresponding components are provided the pageContext as props which is the returned JSON from [Open weather](https://openweathermap.org). The [Search component](https://github.com/amwebdev86/news-weather-app/blob/master/src/templates/search.js) displays a text field and button that allows the user to enter and update the query in the API endpoint. initially the page displays no information until the component mounts. After intial mount the component updates it's state whenever the query changes from user input. The displayed information on the [temperature](https://github.com/amwebdev86/news-weather-app/blob/dev/src/pages/components/temperature.js) card use functions I created to transform the data from Kelvins to Fahrenheit and Celsius respectively:
+```js
+function convertKelvinToFah(k) {
+  return (((k - 273.15) * 9) / 5 + 32).toFixed(2) + " \xB0F"
+}
+function convertKelvinToCelsius(k) {
+  return (k - 273.15).toFixed(2) + "\xB0C"
+}
 
-[Search component](https://github.com/amwebdev86/news-weather-app/blob/master/src/templates/search.js)
+
+  ( props.main ===undefined ? <div>Content unavailable</div> : <div>
+      <h4>
+        Temp: {convertKelvinToFah(props.main.temp)} (
+        {convertKelvinToCelsius(props.main.temp)})
+      </h4>
+      <p>Feels like: {convertKelvinToFah(props.main.feels_like)}</p>
+      <h4>
+        High: {convertKelvinToFah(props.main.temp_max)} Low:{" "}
+        {convertKelvinToFah(props.main.temp_min)}
+      </h4>
+      <p>Humidity: {props.main.humidity} </p>
+
+      <p>Pressure: {props.main.pressure / 100}mb</p>
+    </div>)
+  )
+```
+
+
 
 Below are the details on why I chose certain methods and APIs.
 
@@ -49,6 +74,32 @@ useEffect fetches the data using Axio:
 ```
 
 - I decided to fetch the data with axio vs using GraphiQL. This was based on time constraints and learning GraphiQL was not the focus of this project. Future iterations will take advantage of the data layer and GraphiQL queries.
+
+- Upon attempting to build the project I had issues with variables being undefined due to the nature of Gatsby site generation of static pages. I was unable to retrieve the data from the API and therefore could not build the page. The workaround I produced was using ternary conditionals within the display components.
+example:
+```js
+import React from "react"
+export default function Temperature(props) {
+  return (
+  ( props.main ===undefined ? <div>Content unavailable</div> : <div>
+      <h4>
+        Temp: {convertKelvinToFah(props.main.temp)} (
+        {convertKelvinToCelsius(props.main.temp)})
+      </h4>
+      <p>Feels like: {convertKelvinToFah(props.main.feels_like)}</p>
+      <h4>
+        High: {convertKelvinToFah(props.main.temp_max)} Low:{" "}
+        {convertKelvinToFah(props.main.temp_min)}
+      </h4>
+      <p>Humidity: {props.main.humidity} </p>
+
+      <p>Pressure: {props.main.pressure / 100}mb</p>
+    </div>)
+  )
+}
+
+
+``` 
 ## Installation
 You can view the deployed version [HERE]() 
 ### Fork or download
