@@ -47,11 +47,12 @@ export default function Search({ pageContext: { weather } }) {
 
   return (
     <Fragment>
+     
+      <Container>
       <Header
         links={["Home", "Louisville", "Search"]}
         headerText={data.name + "Weather"}
       />
-      <Container>
         <label htmlFor="query">Enter City:</label>
         <input
           type="text"
