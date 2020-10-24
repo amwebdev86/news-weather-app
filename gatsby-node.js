@@ -1,15 +1,15 @@
 const axios = require("axios");
 const apiKey = process.env.WEATHER_API_KEY;
-const url = `https://api.openweathermap.org/data/2.5/`;
+const urlWeather = `https://api.openweathermap.org/data/2.5/`;
 const weatherEndpoint = `weather?q=Louisville&appid=${apiKey}`;
 /**
  *
  * @param {*} endpoint
  */
-const get = endpoint => axios.get(url + `${endpoint}`)
+const get = (url,endpoint) => axios.get(`${url}` + `${endpoint}`)
 
 const getCityWeather = async query => {
-  const { data: weather } = await get(weatherEndpoint)
+  const { data: weather } = await get(urlWeather,weatherEndpoint)
   return { ...weather }
 }
 
