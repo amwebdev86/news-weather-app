@@ -3,7 +3,7 @@
 Get the latest weather for any city by searching the city name and retrieving data from the openweather.org API. This project was created using Gatsby.
 This project was created following the project requirements for [Code Louisville](https://codelouisville.org/) which are detailed below.
 ## Installation
-You can view the deployed version [HERE](tiresome-box.surge.sh) 
+You can view the deployed version [HERE](https://tiresome-box.surge.sh) 
 ### Fork or download
 1. download and install the Gatsby CLI following these instructions [HERE](https://www.gatsbyjs.com/tutorial/part-zero/)
 2. download the project and open your terminal and run the command ``` npm install ``` to install and update any required dependancies.
