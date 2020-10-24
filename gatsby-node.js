@@ -1,7 +1,7 @@
-const axios = require("axios")
-const apiKey = process.env.WEATHER_API_KEY
-const url = `https://api.openweathermap.org/data/2.5/`
-const weatherEndpoint = `weather?q=Louisville&appid=${apiKey}`
+const axios = require("axios");
+const apiKey = process.env.WEATHER_API_KEY;
+const url = `https://api.openweathermap.org/data/2.5/`;
+const weatherEndpoint = `weather?q=Louisville&appid=${apiKey}`;
 /**
  *
  * @param {*} endpoint

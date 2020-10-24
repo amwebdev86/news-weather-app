@@ -1,3 +1,4 @@
+import React from 'react';
 import Header from "../pages/components/header"
 import Temperature from "../pages/components/temperature"
 import WeatherCard from "../pages/components/weather-card"

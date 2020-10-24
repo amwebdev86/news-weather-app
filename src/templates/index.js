@@ -1,3 +1,4 @@
+import React from 'react';
 import Container from "../pages/components/container"
 import Header from "../pages/components/header"
 export default function Home({ pageContext: { name } }) {
