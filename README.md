@@ -2,7 +2,13 @@
 ![Imgur](https://i.imgur.com/AD1bWQx.png)
 Get the latest weather for any city by searching the city name and retrieving data from the openweather.org API. This project was created using Gatsby.
 This project was created following the project requirements for [Code Louisville](https://codelouisville.org/) which are detailed below.
-
+## Installation
+You can view the deployed version [HERE](tiresome-box.surge.sh) 
+### Fork or download
+1. download and install the Gatsby CLI following these instructions [HERE](https://www.gatsbyjs.com/tutorial/part-zero/)
+2. download the project and open your terminal and run the command ``` npm install ``` to install and update any required dependancies.
+3. You will need to provide an API key to retrieve the API you can get the key [HERE](https://openweathermap.org/guide). Below are more details on adding api Key.
+4. run the command ``` gatsby develop ``` to start up development server and open your browser and navigate to http://localhost:8000/ [localhost](http://localhost:8000/)
 ## Development
 The application is broken into several components including 3 template components using createPages() a node.js API method in Gatsby. The created pages corresponding components are provided the pageContext as props which is the returned JSON from [Open weather](https://openweathermap.org). The [Search component](https://github.com/amwebdev86/news-weather-app/blob/master/src/templates/search.js) displays a text field and button that allows the user to enter and update the query in the API endpoint. initially the page displays no information until the component mounts. After intial mount the component updates it's state whenever the query changes from user input. The displayed information on the [temperature](https://github.com/amwebdev86/news-weather-app/blob/dev/src/pages/components/temperature.js) card use functions I created to transform the data from Kelvins to Fahrenheit and Celsius respectively:
 ```js
@@ -101,16 +107,11 @@ export default function Temperature(props) {
 
 
 ``` 
-## Installation
-You can view the deployed version [HERE]() 
-### Fork or download
-1. download and install the Gatsby CLI following these instructions [HERE](https://www.gatsbyjs.com/tutorial/part-zero/)
-2. download the project and open your terminal and run the command ``` npm install ``` to install and update any required dependancies.
-3. You will need to provide an API key to retrieve the API you can get the key [HERE](https://openweathermap.org/guide). Below are more details on adding api Key.
-4. run the command ``` gatsby develop ``` to start up development server and open your browser and navigate to http://localhost:8000/ [localhost](http://localhost:8000/)
+
+
 
 ### Adding API Key
-(if you wish to view the application without a key you can access the deployed version on [Netlify]() )
+(if you wish to view the application without a key you can access the deployed version on [Surge](tiresome-box.surge.sh) )
 - Hard-code the api in gatsby-node.js on line 2 . the defaults city is Louisville you can also change this in the weatherEndpoint on line 4
 ```js
 const axios = require("axios");
