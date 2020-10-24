@@ -3,8 +3,10 @@ const apiKey = process.env.WEATHER_API_KEY;
 const urlWeather = `https://api.openweathermap.org/data/2.5/`;
 const weatherEndpoint = `weather?q=Louisville&appid=${apiKey}`;
 /**
- *
- * @param {*} endpoint
+ * 
+ * @param {string} url 
+ * @param {string} endpoint 
+ * creates a async get request to provided url and endpoint
  */
 const get = (url,endpoint) => axios.get(`${url}` + `${endpoint}`)
 
