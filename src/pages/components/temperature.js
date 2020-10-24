@@ -1,8 +1,7 @@
 import React from "react"
-
 export default function Temperature(props) {
   return (
-    <div>
+  ( props.main ===undefined ? <div>Content unavailable</div> : <div>
       <h4>
         Temp: {convertKelvinToFah(props.main.temp)} (
         {convertKelvinToCelsius(props.main.temp)})
@@ -15,10 +14,11 @@ export default function Temperature(props) {
       <p>Humidity: {props.main.humidity} </p>
 
       <p>Pressure: {props.main.pressure / 100}mb</p>
-    </div>
+    </div>)
   )
 }
 //export these from another file.
+
 function convertKelvinToFah(k) {
   return (((k - 273.15) * 9) / 5 + 32).toFixed(2) + " \xB0F"
 }

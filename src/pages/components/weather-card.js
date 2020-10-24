@@ -2,7 +2,7 @@ import React from "react"
 
 export default function WeatherCard(props) {
   return (
-    <ul>
+  ( props.weather === undefined ? <div>Content Unavailable</div> : <ul>
       {props.weather.map(item => (
         <li key={item.id}>
           <img
@@ -13,6 +13,6 @@ export default function WeatherCard(props) {
           <p>{item.description}</p>
         </li>
       ))}
-    </ul>
+    </ul>)
   )
 }
