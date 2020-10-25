@@ -44,7 +44,7 @@ Below are the details on why I chose certain methods and APIs.
 ## Key decisions
 
  - [GATSBY](https://www.gatsbyjs.com/) In scope of the project requirements I decided to use a framework which was a bonus requirment. The decision was made to add a bit of a challenge and learn a new framework. Gatsby is a React based open source framework that will generate static sites. 
-- [creatPages](https://www.gatsbyjs.com/docs/node-apis/#createPages) is a Node.js API in Gatsby this was used in gatsby-node.js file to create the initial pages. The main reason for using this method is to provide the initial weather data to the search and /Louisville page. the file reaches out the endpoint and gets the intial call to the api. In future iterations I plan on using Gatsby's data layer and GraphiQL or createPagesStatefully.
+- [creatPage](https://www.gatsbyjs.com/docs/creating-and-modifying-pages/) is a Node.js API in Gatsby this was used in gatsby-node.js file to create the initial pages. The main reason for using this method is to provide the initial weather data to the search and /Louisville page. the file reaches out the endpoint and gets the intial call to the api. In future iterations I plan on using Gatsby's data layer and GraphiQL or createPagesStatefully.
 - I used React function components keep code length down and used useState() to store the objects being retrieved and useEffect() to update the component state:
 ```js
  const [data, setData] = useState({

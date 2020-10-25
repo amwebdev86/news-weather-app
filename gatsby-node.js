@@ -1,13 +1,16 @@
 const axios = require("axios")
 const apiKey = process.env.WEATHER_API_KEY
+const newsKey = process.env.NEWS_KEY
 const urlWeather = `https://api.openweathermap.org/data/2.5/`
+const urlNews = ` http://newsapi.org/v2/`
+
 /**
  *
  * @param {string} url
  * @param {string} endpoint
  * creates a async get request to provided url and endpoint
  */
-const get = (url, endpoint) => axios.get(`${url}` + `${endpoint}`)
+const get = (url, endpoint) => axios.get(`${url}${endpoint}`).catch(err=> err)
 /**
  *
  * @param {string} query
@@ -19,13 +22,21 @@ const getCityWeather = async query => {
   return { ...weather }
 }
 
+const getNews = async () => {
+  const newsEndpoint = `top-headlines?country=us&apiKey=${newsKey}`
+  const { data: news } = await get(urlNews, newsEndpoint)
+  return { ...news }
+}
+
 exports.createPages = async ({ actions: { createPage } }) => {
   const weather = await getCityWeather("louisville")
+  const news = await getNews()
+
   createPage({
     path: "/",
     component: require.resolve("./src/templates/index"),
     context: {
-      name: "Weather and News",
+     news
     },
   })
   createPage({
