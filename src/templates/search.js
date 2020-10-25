@@ -50,7 +50,7 @@ export default function Search({ pageContext: { weather } }) {
      
       <Container>
       <Header
-        links={["Home", "Louisville", "Search"]}
+        links={["Home", "Weather"]}
         headerText={data.name + "Weather"}
       />
         <label htmlFor="query">Enter City:</label>

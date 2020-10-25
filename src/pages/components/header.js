@@ -15,11 +15,9 @@ export default function Header(props) {
           <Link to="/" activeStyle={{ color: "red" }} style={linkStyles}>
             {props.links === undefined ? 'Home' : props.links[0]}
           </Link>
-          <Link to="/weather" activeStyle={{ color: "red" }} style={linkStyles}>
-            {props.links === undefined ? 'Weather' : props.links[1]}
-          </Link>
+          
           <Link to="/search" activeStyle={{ color: "red" }} style={linkStyles}>
-            {props.links === undefined ? 'Search' : props.links[2]}
+            {props.links === undefined ? 'Search' : props.links[1]}
           </Link>
         </div>
       }
