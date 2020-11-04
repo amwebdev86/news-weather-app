@@ -5,16 +5,13 @@ import {
   convertKelvinToFah,
 } from "../../utils/conversion"
 export default function Temperature(props) {
-  return props.main === undefined ? (
+  return props.main.temp === NaN ? (
     <Alert variant="danger">Content unavailable</Alert>
   ) : (
     <Card className="text-center ">
       <Card.Header className="display-3">
-        <Badge
-          variant="info">
-          {convertKelvinToFah(props.main.temp)}
-        </Badge>{" "}
-        ({convertKelvinToCelsius(props.main.temp)})
+        <Badge variant="info">{convertKelvinToFah(props.main.temp)}</Badge> (
+        {convertKelvinToCelsius(props.main.temp)})
       </Card.Header>
       <Card.Body>
         <Card.Title>
