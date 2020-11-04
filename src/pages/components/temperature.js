@@ -12,9 +12,9 @@ export default function Temperature(props) {
       <Card.Header className="display-3">
         <Badge
           variant={
-            convertKelvinToCelsius(props.main.temp) < 70.0
-              ? "danger"
-              : "primary"
+            convertKelvinToCelsius(props.main.temp) <=70.0
+              ? "primary"
+              : "danger"
           }
         >
           {convertKelvinToFah(props.main.temp)}
