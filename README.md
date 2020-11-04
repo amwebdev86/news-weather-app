@@ -1,6 +1,6 @@
 # Weather and News app
 
-![Imgur](https://i.imgur.com/AD1bWQx.png)
+![Imgur](https://i.imgur.com/pRfSECU.png)
 Get the latest weather for any city by searching the city name and retrieving data from the openweather.org API. This project was created using Gatsby.
 This project was created following the project requirements for [Code Louisville](https://codelouisville.org/) which are detailed below.
 
