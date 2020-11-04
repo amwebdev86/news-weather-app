@@ -1,12 +1,20 @@
-import React from 'react'
+import React from "react"
+import { Alert, Card } from "react-bootstrap"
 
 export default function WindCard(props) {
-    return (
-     ( props.wind === undefined ? <div>Data Unavailable</div> : <div>
-        <h1>Wind</h1>
-        <h3>Speed: {props.wind.speed} m/s</h3>
-            <h4>Direction: {props.wind.deg + "\xB0"}</h4>
-            <p>{props.wind.gust ? props.wind.gust:'No Gust'}</p>
-      </div>)
-    )
+  return props.wind === undefined ? (
+    <Alert variant="danger">Data Unavailable</Alert>
+  ) : (
+    <Card className="text-center">
+      <Card.Header>
+        Wind<span role="img">🌬</span>
+      </Card.Header>
+      <Card.Body>
+        <Card.Text className="lead">
+          Speed: {props.wind.speed} m/s Direction: {props.wind.deg + "\xB0"}{" "}
+          {props.wind.gust ? props.wind.gust : "No Gust"}
+        </Card.Text>
+      </Card.Body>
+    </Card>
+  )
 }
