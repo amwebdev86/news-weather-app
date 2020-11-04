@@ -1,19 +1,30 @@
 import React from "react"
-
-export default function Card(props) {
-  return props.data === undefined ? <div>Content Unavailable</div> : (
+import { Alert, Card } from "react-bootstrap"
+import { convertUnixTime } from "../../utils/conversion"
+export default function MainCard(props) {
+  return props.data === undefined ? (
     <div>
-      <h1>{props.data.name}</h1>
-      <h4>Sunrise: {convertUnixTime(props.data.sys.sunrise)} am </h4>
-      <h4> Sunset: {convertUnixTime(props.data.sys.sunset)} pm</h4>
+      <Alert variant="danger">Content Unavailable</Alert>
     </div>
+  ) : (
+    <Card className="text-lg-center">
+      <Card.Header className="display-1 font-weight-bold  text-info">
+        {props.data.name}
+      </Card.Header>
+      <Card.Body>
+        <Card.Title>Sunrise/Sunset</Card.Title>
+        <Card.Text>
+          {" "}
+          <span role="img" aria-label="Sunrise">
+            🌅
+          </span>{" "}
+          : {convertUnixTime(props.data.sys.sunrise)} am{" "}
+          <span role="img" aria-label="Sunset behind buildings">
+            🌇
+          </span>{" "}
+          : {convertUnixTime(props.data.sys.sunset)} pm
+        </Card.Text>
+      </Card.Body>
+    </Card>
   )
-}
-
-function convertUnixTime(unix) {
-  let unix_timeStamp = unix
-  const date = new Date(unix_timeStamp * 1000)
-  let hours = date.getHours()
-  let mins = "0" + date.getMinutes()
-  return `${hours > 12 ? hours - 12 : hours}:${mins.substr(-2)}`
 }

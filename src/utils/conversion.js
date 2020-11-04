@@ -31,5 +31,12 @@ function convertKelvinToFah(k) {
 function convertKelvinToCelsius(k) {
   return (k - 273.15).toFixed(2) + "\xB0C"
 }
+function convertUnixTime(unix) {
+  let unix_timeStamp = unix
+  const date = new Date(unix_timeStamp * 1000)
+  let hours = date.getHours()
+  let mins = "0" + date.getMinutes()
+  return `${hours > 12 ? hours - 12 : hours}:${mins.substr(-2)}`
+}
 
-export { truncateString, convertKelvinToCelsius, convertKelvinToFah}
+export { truncateString, convertKelvinToCelsius, convertKelvinToFah, convertUnixTime}

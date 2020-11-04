@@ -1,24 +1,36 @@
 import React from "react"
-import Container from "../pages/components/container"
-import Header from "../pages/components/header"
+import { Alert, Nav, Card, CardColumns } from "react-bootstrap"
+import MainContainer from "../pages/components/container"
 import { truncateString } from "../utils/conversion"
 
 export default function Home({ pageContext: { news } }) {
   //if data unavalable return error msg
   return news.articles === undefined ? (
-    <div>There was a problem loading news</div>
+    <MainContainer>
+      <Alert variant="danger">There was a problem loading news</Alert>
+    </MainContainer>
   ) : (
-    <Container>
-      <Header links={["Home", "Weather"]} headerText="Home" />
-      <ul>
+    <MainContainer>
+      <CardColumns>
         {news.articles.map(article => (
-          <li key={(article.id = Math.random() * 100)}>
-            <img src={article.urlToImage} />
-            <a href={article.url}>{truncateString(article.title, 50, "...")}</a>
-            <span>source: {article.source.name}</span>
-          </li>
+          <Card key={(article.id = Math.random() * 100)}>
+            <Card.Img variant="top" src={article.urlToImage} alt="article" />
+            <Card.Body>
+              <Card.Title>
+                {truncateString(article.title, 100, "...")}
+              </Card.Title>
+              <Card.Text>
+                <Nav.Link href={article.url} target="_blank">
+                  More
+                </Nav.Link>
+              </Card.Text>
+              <Card.Footer className="text-muted">
+                source: {article.source.name}
+              </Card.Footer>
+            </Card.Body>
+          </Card>
         ))}
-      </ul>
-    </Container>
+      </CardColumns>
+    </MainContainer>
   )
 }

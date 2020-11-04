@@ -1,26 +1,38 @@
 import React from "react"
+import { Alert, Badge, Card } from "react-bootstrap"
 import {
   convertKelvinToCelsius,
   convertKelvinToFah,
 } from "../../utils/conversion"
 export default function Temperature(props) {
   return props.main === undefined ? (
-    <div>Content unavailable</div>
+    <Alert variant="danger">Content unavailable</Alert>
   ) : (
-    <div>
-      <h4>
-        Temp: {convertKelvinToFah(props.main.temp)} (
-        {convertKelvinToCelsius(props.main.temp)})
-      </h4>
-      <p>Feels like: {convertKelvinToFah(props.main.feels_like)}</p>
-      <h4>
-        High: {convertKelvinToFah(props.main.temp_max)} Low:{" "}
-        {convertKelvinToFah(props.main.temp_min)}
-      </h4>
-      <p>Humidity: {props.main.humidity} </p>
-
-      <p>Pressure: {props.main.pressure / 100}mb</p>
-    </div>
+    <Card className="text-center ">
+      <Card.Header className="display-3">
+        <Badge
+          variant={
+            convertKelvinToCelsius(props.main.temp) < 70.0
+              ? "danger"
+              : "primary"
+          }
+        >
+          {convertKelvinToFah(props.main.temp)}
+        </Badge>{" "}
+        ({convertKelvinToCelsius(props.main.temp)})
+      </Card.Header>
+      <Card.Body>
+        <Card.Title>
+          High: {convertKelvinToFah(props.main.temp_max)} Low:{" "}
+          {convertKelvinToFah(props.main.temp_min)}
+        </Card.Title>
+        <Card.Text className="text-muted">
+          Feels like: {convertKelvinToFah(props.main.feels_like)}{" "}
+          {props.main.humidity}
+          {props.main.pressure / 100}mb
+        </Card.Text>
+      </Card.Body>
+    </Card>
   )
 }
 //export these from another file.

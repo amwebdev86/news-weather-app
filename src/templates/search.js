@@ -1,12 +1,17 @@
-import React, { useState, useEffect, Fragment } from "react"
+import React, { useState, useEffect } from "react"
 import axios from "axios"
-import styles from "../pages/components/weather-result.module.css"
-import Card from "../pages/components/card"
+import MainCard from "../pages/components/card"
 import Temperature from "../pages/components/temperature"
 import WeatherCard from "../pages/components/weather-card"
-import Header from "../pages/components/header"
 import WindCard from "../pages/components/wind-card"
-import Container from "../pages/components/container"
+import MainContainer from "../pages/components/container"
+import {
+  Alert,
+  Button,
+  Container,
+  FormControl,
+  InputGroup,
+} from "react-bootstrap"
 
 const apiKey = process.env.WEATHER_API_KEY
 /**
@@ -34,7 +39,7 @@ export default function Search({ pageContext: { weather } }) {
       setIsLoading(true)
       try {
         const result = await axios(url)
-       
+
         setData(result.data)
       } catch (error) {
         setIsError(true)
@@ -46,42 +51,40 @@ export default function Search({ pageContext: { weather } }) {
   }, [url])
 
   return (
-    <Fragment>
-     
-      <Container>
-      <Header
-        links={["Home", "Weather"]}
-        headerText={data.name + "Weather"}
-      />
-        <label htmlFor="query">Enter City:</label>
-        <input
+    <MainContainer>
+      <InputGroup className="p-4">
+        <FormControl
           type="text"
           value={query}
           onChange={e => setQuery(e.target.value)}
           name="query"
+          placeholder="City Name"
         />
-        <button
-          type="button"
-          onClick={() =>
-            setUrl(
-              `https://api.openweathermap.org/data/2.5/weather?q=${query}&appid=${apiKey}`
-            )
-          }
-        >
-          Get Weather
-        </button>
-        {isError && <div className={styles.error}>Something went wrong...</div>}
-        {isLoading && !data ? (
-          <div>Loading...</div>
-        ) : (
-          <div>
-            <Card data={data} />
-            <WeatherCard weather={data.weather} />
-            <Temperature main={data.main} />
-            <WindCard wind={data.wind} />
-          </div>
-        )}
-      </Container>
-    </Fragment>
+        <InputGroup.Append>
+          <Button
+            type="button"
+            onClick={() =>
+              setUrl(
+                `https://api.openweathermap.org/data/2.5/weather?q=${query}&appid=${apiKey}`
+              )
+            }
+          >
+            Get Weather
+          </Button>
+        </InputGroup.Append>
+      </InputGroup>
+
+      {isError && <Alert variant="danger">Something went wrong...</Alert>}
+      {isLoading && data ? (
+        <Alert variant="warning">Loading...</Alert>
+      ) : (
+        <Container fluid>
+          <MainCard data={data} />
+          <Temperature main={data.main} />
+          <WeatherCard weather={data.weather} />
+          <WindCard wind={data.wind} />
+        </Container>
+      )}
+    </MainContainer>
   )
 }
