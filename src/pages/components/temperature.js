@@ -5,7 +5,7 @@ import {
   convertKelvinToFah,
 } from "../../utils/conversion"
 export default function Temperature(props) {
-  return props.main.temp === NaN ? (
+  return props.main.temp === isNaN ? (
     <Alert variant="danger">Content unavailable</Alert>
   ) : (
     <Card className="text-center ">
